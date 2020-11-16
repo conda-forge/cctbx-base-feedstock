@@ -1,0 +1,15 @@
+diff --git a/modules/cctbx_project/libtbx/SConscript b/modules/cctbx_project/libtbx/SConscript
+index 584b42bc1d..a5d02fe12a 100644
+--- a/modules/cctbx_project/libtbx/SConscript
++++ b/modules/cctbx_project/libtbx/SConscript
+@@ -772,6 +772,11 @@ int main() {
+     if sys.platform.startswith("darwin"):
+       cc = os.environ.get('CLANG', '')
+       cxx = os.environ.get('CLANGXX', '')
++    # fallback
++    if not os.path.isfile(cc):
++      cc = os.environ.get('CC_FOR_BUILD', '')
++    if not os.path.isfile(cxx):
++      cxx = os.environ.get('CXX_FOR_BUILD', '')
+     if not os.path.isfile(cc) or not os.path.isfile(cxx):
+       raise RuntimeError('conda compilers are not installed.')
