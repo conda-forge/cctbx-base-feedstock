@@ -16,7 +16,7 @@ source:
     - test2.patch
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: true
 
 requirements:
@@ -59,7 +59,7 @@ outputs:
         - libsvm
         - matplotlib-base
         - mrcfile
-        - {{ pin_compatible('numpy') }}
+        - {{ pin_compatible('numpy', upper_bound='1.21') }}
         - pillow
         - psutil
         - python
