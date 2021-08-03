@@ -1,4 +1,4 @@
-{% set version = "2021.6" %}
+{% set version = "2021.7" %}
 
 package:
   name: cctbx-base
@@ -6,12 +6,13 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: bd3963c59a62875224a04efc3af7073269b2e846887f0f977b4464c3258cd42b
+  sha256: 9f54cf949dbb20affc26c105a4170a46be6a2fa9feeed9ad10d4d8743d617664
   patches:
     - cbf.patch
     - crys3d.patch
     - dxtbx.patch
     - libtbx_osx-arm64.patch  # [build_platform != target_platform]
+    - libtbx_SConscript.patch
 
 build:
   number: 0
