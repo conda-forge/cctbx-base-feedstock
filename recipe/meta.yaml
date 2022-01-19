@@ -90,7 +90,7 @@ outputs:
         - python
         - pyzmq
         - websockets
-        - wxpython
+        - wxpython  # [x86_64 or arm64]
     test:
       imports:
         - scitbx.array_family.flex
