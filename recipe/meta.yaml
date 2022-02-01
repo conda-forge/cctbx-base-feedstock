@@ -40,7 +40,7 @@ requirements:
     - libglu  # [linux]
     - numpy
     - python
-    - python.app  # [osx]
+    - python.app <1.4 # [osx]
     - scons
     - setuptools <=59
     - six
@@ -69,12 +69,12 @@ outputs:
         - six
     test:
       imports:
-        - scitbx.array_family.flex
-        - gltbx.gl  # [not (win and py>=39)]
-        - gltbx.glu  # [not (win and py>=39)]
+        - scitbx.array_family.flex  # [build_platform == target_platform]
+        - gltbx.gl  # [not (win and py>=39) and (build_platform == target_platform)]
+        - gltbx.glu  # [not (win and py>=39) and (build_platform == target_platform)]
       commands:
-        - libtbx.show_commands
-        - pip check
+        - libtbx.show_commands  # [build_platform == target_platform]
+        - pip check  # [build_platform == target_platform]
       requires:
         - pip
 
@@ -90,15 +90,15 @@ outputs:
         - python
         - pyzmq
         - websockets
-        - wxpython
+        - wxpython  # [x86_64 or arm64]
     test:
       imports:
-        - scitbx.array_family.flex
-        - gltbx.gl  # [not (win and py>=39)]
-        - gltbx.glu  # [not (win and py>=39)]
+        - scitbx.array_family.flex  # [build_platform == target_platform]
+        - gltbx.gl  # [not (win and py>=39) and (build_platform == target_platform)]
+        - gltbx.glu  # [not (win and py>=39) and (build_platform == target_platform)]
       commands:
-        - libtbx.show_commands
-        - pip check
+        - libtbx.show_commands  # [build_platform == target_platform]
+        - pip check  # [build_platform == target_platform]
       requires:
         - pip
 
