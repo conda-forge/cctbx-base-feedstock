@@ -1,4 +1,4 @@
-{% set version = "2021.12" %}
+{% set version = "2022.1" %}
 
 package:
   name: cctbx-base
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: df42a78f29d3c393c8f786d3dce8906df708ee87a44ccce9b2f67347135ccdb7
+  sha256: 8a333704137ac80cbd2cefc426095da26310bd31937aae5dd14c4b5dd60786dc
   patches:
     - cbf.patch
     - crys3d.patch
@@ -15,7 +15,7 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 3
+  number: 0
   preserve_egg_dir: true
 
 requirements:
@@ -40,7 +40,7 @@ requirements:
     - libglu  # [linux]
     - numpy
     - python
-    - python.app <1.4 # [osx]
+    - python.app <1.4  # [osx]
     - scons
     - setuptools <=59
     - six
