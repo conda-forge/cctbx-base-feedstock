@@ -99,7 +99,7 @@ outputs:
       commands:
         - libtbx.show_commands  # [build_platform == target_platform]
         - pip check  # [build_platform == target_platform]
-        - libtbx.python -c "import wx; wx.App()"  # [build_platform == target_platform]
+        - libtbx.python -c "import wx; wx.App()"  # [build_platform == target_platform and not linux]
       requires:
         - pip
 
