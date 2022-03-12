@@ -9,3 +9,6 @@ provider:
   linux_aarch64: azure
   linux_ppc64le: azure
 test: native
+github:
+  branch_name: main
+  tooling_branch_name: main
