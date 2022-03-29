@@ -70,8 +70,8 @@ outputs:
     test:
       imports:
         - scitbx.array_family.flex  # [build_platform == target_platform]
-        - gltbx.gl  # [not (win and py>=39) and (build_platform == target_platform)]
-        - gltbx.glu  # [not (win and py>=39) and (build_platform == target_platform)]
+        - gltbx.gl  # [not (win and py>=38) and (build_platform == target_platform)]
+        - gltbx.glu  # [not (win and py>=38) and (build_platform == target_platform)]
       commands:
         - libtbx.show_commands  # [build_platform == target_platform]
         - pip check  # [build_platform == target_platform]
@@ -94,8 +94,8 @@ outputs:
     test:
       imports:
         - scitbx.array_family.flex  # [build_platform == target_platform]
-        - gltbx.gl  # [not (win and py>=39) and (build_platform == target_platform)]
-        - gltbx.glu  # [not (win and py>=39) and (build_platform == target_platform)]
+        - gltbx.gl  # [not (win and py>=38) and (build_platform == target_platform)]
+        - gltbx.glu  # [not (win and py>=38) and (build_platform == target_platform)]
       commands:
         - libtbx.show_commands  # [build_platform == target_platform]
         - pip check  # [build_platform == target_platform]
