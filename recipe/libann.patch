@@ -1,0 +1,13 @@
+diff --git a/modules/annlib_adaptbx/SConscript b/modules/annlib_adaptbx/SConscript
+index c85217f..b656c09 100644
+--- a/modules/annlib_adaptbx/SConscript
++++ b/modules/annlib_adaptbx/SConscript
+@@ -41,7 +41,7 @@ if not libtbx.env.module_is_installed("annlib_adaptbx"):
+ 
+   if (env_etc.static_libraries): builder = env.StaticLibrary
+   else:                          builder = env.SharedLibrary
+-  builder(target='#lib/ann',
++  builder(target='#lib/ann_cctbx',
+     source = ["../annlib/src/ANN.cpp",
+               "../annlib/src/bd_fix_rad_search.cpp",
+               "../annlib/src/bd_pr_search.cpp",
