@@ -11,3 +11,15 @@ index c85217f..b656c09 100644
      source = ["../annlib/src/ANN.cpp",
                "../annlib/src/bd_fix_rad_search.cpp",
                "../annlib/src/bd_pr_search.cpp",
+diff --git a/modules/annlib_adaptbx/ann/boost_python/SConscript b/modules/annlib_adaptbx/ann/boost_python/SConscript
+index cb4ff77..3e23a01 100644
+--- a/modules/annlib_adaptbx/ann/boost_python/SConscript
++++ b/modules/annlib_adaptbx/ann/boost_python/SConscript
+@@ -1,6 +1,6 @@
+ Import("env_annlib_boost_python_ext")
+ env = env_annlib_boost_python_ext.Clone()
+-env.Prepend(LIBS=["ann",])
++env.Prepend(LIBS=["ann_cctbx",])
+ env.SharedLibrary(
+   target="#lib/annlib_ext",
+   source=["annlib_ext.cpp",])
