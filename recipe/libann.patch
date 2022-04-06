@@ -62,3 +62,16 @@ index 45ebfc2bc7..71ec1e2747 100644
  env.SharedLibrary(
    target="#lib/rstbx_bandpass_ext",
    source=["ext.cpp"])
+diff --git a/modules/cctbx_project/spotfinder/SConscript b/modules/cctbx_project/spotfinder/SConscript
+index 112c7a440f..7095b797cd 100644
+--- a/modules/cctbx_project/spotfinder/SConscript
++++ b/modules/cctbx_project/spotfinder/SConscript
+@@ -33,7 +33,7 @@ env_etc.include_registry.append(
+   paths=env_etc.spotfinder_common_includes)
+ 
+ envlm = env.Clone(
+-  LIBS=["ann","omptbx"]+env_etc.libm
++  LIBS=["ann_cctbx","omptbx"]+env_etc.libm
+ )
+ 
+ boost_libs = "#"+os.path.join(os.path.basename(env_etc.boost_dist), "libs")
