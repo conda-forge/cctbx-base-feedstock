@@ -24,8 +24,6 @@ del /S /Q .\build\*cbflib*
 del /S /Q .\build\lib\cbflib*
 rmdir /S /Q .\modules\dxtbx
 rmdir /S /Q .\modules\cbflib
-rmdir /S /Q .\build\annlib
-rmdir /S /Q .\modules\annlib
 call .\build\bin\libtbx.python %RECIPE_DIR%\clean_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
 
@@ -71,6 +69,11 @@ call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
 %PYTHON% %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
+
+REM copy annlib headers and then clean up annlib
+xcopy /E .\modules\annlib\include\ANN %EXTRA_CCTBX_DIR%\annlib_adaptbx\include\ANN\
+rmdir /S /Q .\build\annlib
+rmdir /S /Q .\modules\annlib
 
 REM remove extra copies of dispatchers
 attrib +H %LIBRARY_BIN%\libtbx.show_build_path.bat
