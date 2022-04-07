@@ -37,8 +37,6 @@ rm -fr ./build/lib/cbflib*
 rm -fr ./build/lib/*dxtbx*
 rm -fr ./modules/dxtbx
 rm -fr ./modules/cbflib
-rm -fr ./build/annlib
-rm -fr ./modules/annlib
 ./build/bin/libtbx.python ${RECIPE_DIR}/clean_env.py
 
 # remove extra source files (C, C++, Fortran, CUDA)
@@ -89,6 +87,11 @@ if [[ -f "${PREFIX}/python.app/Contents/MacOS/python" ]]; then
 else
   ${PYTHON} ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 fi
+
+# copy annlib headers and then clean up annlib
+cp -a ./modules/annlib/include/ANN ${EXTRA_CCTBX_DIR}/annlib_adaptbx/include/
+rm -fr ./build/annlib
+rm -fr ./modules/annlib
 
 # remove extra copies of dispatchers
 echo Removing some duplicate dispatchers
