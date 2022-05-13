@@ -16,7 +16,7 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 1
+  number: 2
   preserve_egg_dir: true
 
 requirements:
@@ -87,7 +87,7 @@ outputs:
       run:
         - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
         - ipython
-        - pyside2  # [x86_64 and py<310]
+        - pyside2  # [x86_64]
         - python
         - pyzmq
         - websockets
