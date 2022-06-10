@@ -22,6 +22,7 @@ cd ..
 REM remove dxtbx and cbflib
 del /S /Q .\build\*cbflib*
 del /S /Q .\build\lib\cbflib*
+for /D %%i in (.\build\lib\*dxtbx*) do rmdir /S /Q %%i
 rmdir /S /Q .\modules\dxtbx
 rmdir /S /Q .\modules\cbflib
 call .\build\bin\libtbx.python %RECIPE_DIR%\clean_env.py
