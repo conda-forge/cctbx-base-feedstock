@@ -72,12 +72,12 @@ outputs:
         - six
     test:
       imports:
-        - scitbx.array_family.flex  # [build_platform == target_platform]
-        - gltbx.gl  # [not (win and py>=38) and (build_platform == target_platform)]
-        - gltbx.glu  # [not (win and py>=38) and (build_platform == target_platform)]
+        - scitbx.array_family.flex
+        - gltbx.gl  # [not (win and py>=38)]
+        - gltbx.glu  # [not (win and py>=38)]
       commands:
-        - libtbx.show_commands  # [build_platform == target_platform]
-        - pip check  # [build_platform == target_platform]
+        - libtbx.show_commands
+        - pip check
       requires:
         - pip
 
@@ -97,13 +97,13 @@ outputs:
         - wxpython  # [x86_64 or arm64]
     test:
       imports:
-        - scitbx.array_family.flex  # [build_platform == target_platform]
-        - gltbx.gl  # [not (win and py>=38) and (build_platform == target_platform)]
-        - gltbx.glu  # [not (win and py>=38) and (build_platform == target_platform)]
+        - scitbx.array_family.flex
+        - gltbx.gl  # [not (win and py>=38)]
+        - gltbx.glu  # [not (win and py>=38)]
       commands:
-        - libtbx.show_commands  # [build_platform == target_platform]
-        - pip check  # [build_platform == target_platform]
-        - libtbx.python -c "import wx; wx.App()"  # [build_platform == target_platform and not linux]
+        - libtbx.show_commands
+        - pip check
+        - libtbx.python -c "import wx; wx.App()"
       requires:
         - pip
 
