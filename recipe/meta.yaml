@@ -1,4 +1,4 @@
-{% set version = "2022.5" %}
+{% set version = "2022.6" %}
 
 package:
   name: cctbx-base
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: 3ad618f99558f97eb17370f87618fce5d48bf796c1c493cd298835e860e3b176
+  sha256: 94e06d814454b672c772daf2f78f9fdad1f94acb9f8c6b1ebd58bc01f9f90a33
   patches:
     - cbf.patch
     - crys3d.patch
@@ -16,7 +16,7 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 1
+  number: 0
   preserve_egg_dir: true
 
 requirements:
@@ -49,6 +49,8 @@ requirements:
 
 outputs:
   - name: cctbx-base
+    build:
+      skip: true  # [py < 37]
     requirements:
       run:
         - biopython
@@ -70,17 +72,18 @@ outputs:
         - six
     test:
       imports:
-        - scitbx.array_family.flex  # [build_platform == target_platform]
-        - gltbx.gl  # [not (win and py>=38) and (build_platform == target_platform)]
-        - gltbx.glu  # [not (win and py>=38) and (build_platform == target_platform)]
+        - scitbx.array_family.flex
+        - gltbx.gl  # [not (win and py>=38)]
+        - gltbx.glu  # [not (win and py>=38)]
       commands:
-        - libtbx.show_commands  # [build_platform == target_platform]
-        - pip check  # [build_platform == target_platform]
+        - libtbx.show_commands
+        - pip check
       requires:
         - pip
 
   - name: cctbx
     build:
+      skip: true  # [py < 37]
     requirements:
       host:
         - python
@@ -94,13 +97,13 @@ outputs:
         - wxpython  # [x86_64 or arm64]
     test:
       imports:
-        - scitbx.array_family.flex  # [build_platform == target_platform]
-        - gltbx.gl  # [not (win and py>=38) and (build_platform == target_platform)]
-        - gltbx.glu  # [not (win and py>=38) and (build_platform == target_platform)]
+        - scitbx.array_family.flex
+        - gltbx.gl  # [not (win and py>=38)]
+        - gltbx.glu  # [not (win and py>=38)]
       commands:
-        - libtbx.show_commands  # [build_platform == target_platform]
-        - pip check  # [build_platform == target_platform]
-        - libtbx.python -c "import wx; wx.App()"  # [build_platform == target_platform and not linux]
+        - libtbx.show_commands
+        - pip check
+        - libtbx.python -c "import wx; wx.App()"  # [not linux]
       requires:
         - pip
 
