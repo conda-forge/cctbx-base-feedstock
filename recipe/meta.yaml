@@ -49,6 +49,8 @@ requirements:
 
 outputs:
   - name: cctbx-base
+    build:
+      skip: true  # [py < 37]
     requirements:
       run:
         - biopython
@@ -81,6 +83,7 @@ outputs:
 
   - name: cctbx
     build:
+      skip: true  # [py < 37]
     requirements:
       host:
         - python
