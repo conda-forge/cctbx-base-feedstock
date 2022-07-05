@@ -103,7 +103,7 @@ outputs:
       commands:
         - libtbx.show_commands
         - pip check
-        - libtbx.python -c "import wx; wx.App()"
+        - libtbx.python -c "import wx; wx.App()"  # [not linux]
       requires:
         - pip
 
