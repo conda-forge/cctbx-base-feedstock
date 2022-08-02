@@ -90,7 +90,7 @@ outputs:
       run:
         - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
         - ipython
-        - pyside2  # [x86_64]
+        - pyside2  # [x86_64 or arm64]
         - python
         - pyzmq
         - websockets
