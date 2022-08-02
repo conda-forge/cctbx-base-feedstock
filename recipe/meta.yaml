@@ -1,4 +1,4 @@
-{% set version = "2022.6" %}
+{% set version = "2022.7" %}
 
 package:
   name: cctbx-base
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: 94e06d814454b672c772daf2f78f9fdad1f94acb9f8c6b1ebd58bc01f9f90a33
+  sha256: 68884becc3ba668e3a5312365cf0adace9ab654e3a330da5b6da72071e2725bb
   patches:
     - cbf.patch
     - crys3d.patch
@@ -90,7 +90,7 @@ outputs:
       run:
         - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
         - ipython
-        - pyside2  # [x86_64]
+        - pyside2  # [x86_64 or arm64]
         - python
         - pyzmq
         - websockets
