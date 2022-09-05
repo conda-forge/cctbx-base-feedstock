@@ -3,13 +3,13 @@ boost:
 boost_cpp:
 - 1.74.0
 c_compiler:
-- vs2017
+- vs2019
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- vs2019
 libsvm:
 - '3.21'
 numpy:

@@ -1,4 +1,4 @@
-{% set version = "2022.7" %}
+{% set version = "2022.8" %}
 
 package:
   name: cctbx-base
@@ -6,10 +6,9 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: 68884becc3ba668e3a5312365cf0adace9ab654e3a330da5b6da72071e2725bb
+  sha256: bdee3be092c4ef912c4b89e17b3f5f041218088bc959c044346898bbd62f61e1
   patches:
     - cbf.patch
-    - crys3d.patch
     - dxtbx.patch
     - libann.patch
     - libtbx_osx-arm64.patch  # [build_platform != target_platform]
@@ -49,8 +48,6 @@ requirements:
 
 outputs:
   - name: cctbx-base
-    build:
-      skip: true  # [py < 37]
     requirements:
       run:
         - biopython
@@ -82,8 +79,6 @@ outputs:
         - pip
 
   - name: cctbx
-    build:
-      skip: true  # [py < 37]
     requirements:
       host:
         - python
