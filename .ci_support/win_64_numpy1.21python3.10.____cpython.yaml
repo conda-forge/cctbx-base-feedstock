@@ -1,7 +1,7 @@
 boost:
-- 1.74.0
+- 1.78.0
 boost_cpp:
-- 1.74.0
+- 1.78.0
 c_compiler:
 - vs2019
 channel_sources:
@@ -11,7 +11,7 @@ channel_targets:
 cxx_compiler:
 - vs2019
 libsvm:
-- '3.21'
+- '325'
 numpy:
 - '1.21'
 pin_run_as_build:
