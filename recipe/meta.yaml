@@ -64,7 +64,7 @@ outputs:
         - psutil
         - python
         - python.app  # [osx]
-        - reportlab
+        - reportlab  # [py<311]
         - requests
         - scipy
         - six
@@ -86,11 +86,11 @@ outputs:
       run:
         - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
         - ipython
-        - pyside2  # [x86_64 or arm64]
+        - pyside2  # [(x86_64 or arm64) and py<311]
         - python
         - pyzmq
         - websockets
-        - wxpython  # [x86_64 or arm64]
+        - wxpython  # [(x86_64 or arm64) and py<311]
     test:
       imports:
         - scitbx.array_family.flex
