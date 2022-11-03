@@ -64,7 +64,7 @@ outputs:
         - psutil
         - python
         - python.app  # [osx]
-        - reportlab
+        - reportlab  # [py<311]
         - requests
         - scipy
         - six
