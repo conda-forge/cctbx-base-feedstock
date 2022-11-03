@@ -1,4 +1,4 @@
-{% set version = "2022.9" %}
+{% set version = "2022.10" %}
 
 package:
   name: cctbx-base
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: c8b9d518bcbca9f9635ef1387d6dadd15629628cdd40cd4d116aef337db31f73
+  sha256: cf91b64f3cde60ea0d334e6ef6854852f28320f995c4afb1bd249624bc942cfa
   patches:
     - cbf.patch
     - dxtbx.patch
@@ -39,10 +39,11 @@ requirements:
     - future
     - libglu  # [linux]
     - numpy
+    - pip
     - python
     - python.app  # [osx]
     - scons
-    - setuptools <=59
+    - setuptools
     - six
     - xorg-libxfixes  # [linux]
 
