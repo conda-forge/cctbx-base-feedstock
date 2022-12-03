@@ -1,4 +1,4 @@
-{% set version = "2022.10" %}
+{% set version = "2022.11" %}
 
 package:
   name: cctbx-base
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: cf91b64f3cde60ea0d334e6ef6854852f28320f995c4afb1bd249624bc942cfa
+  sha256: 892f7440640b5564de4cb7100cb2a5f04cdd64c1e6f10e642a0c1304f6309201
   patches:
     - cbf.patch
     - dxtbx.patch
@@ -64,7 +64,7 @@ outputs:
         - psutil
         - python
         - python.app  # [osx]
-        - reportlab  # [py<311]
+        - reportlab
         - requests
         - scipy
         - six
@@ -86,11 +86,11 @@ outputs:
       run:
         - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
         - ipython
-        - pyside2  # [(x86_64 or arm64) and py<311]
+        - pyside2  # [x86_64 or arm64]
         - python
         - pyzmq
         - websockets
-        - wxpython  # [(x86_64 or arm64) and py<311]
+        - wxpython  # [x86_64 or arm64]
     test:
       imports:
         - scitbx.array_family.flex
