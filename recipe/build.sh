@@ -20,6 +20,9 @@ rm -fr ./modules/boost
 rm -fr ./modules/eigen
 rm -fr ./modules/scons
 
+# remove some libtbx_refresh.py files
+rm -fr ./modules/dxtbx/libtbx_refresh.py
+
 # build
 export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 ${PYTHON} bootstrap.py build \
