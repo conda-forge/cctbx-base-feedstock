@@ -9,6 +9,7 @@ source:
   sha256: 942509d6aee182d54261ebe2a78c708a6de49c9bddd1270aad6cf24478195091
   patches:
     - cbf.patch
+    - cross-python.patch
     - dxtbx.patch
     - libann.patch
     - libtbx_osx-arm64.patch  # [build_platform != target_platform]
