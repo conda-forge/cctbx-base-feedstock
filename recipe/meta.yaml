@@ -1,4 +1,4 @@
-{% set version = "2023.2" %}
+{% set version = "2023.3" %}
 
 package:
   name: cctbx-base
@@ -6,17 +6,16 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: 942509d6aee182d54261ebe2a78c708a6de49c9bddd1270aad6cf24478195091
+  sha256: d1e35c028cae63a6312150df712f225bbfe51a76474fdf209d2e66bcdb3ac20a
   patches:
     - cbf.patch
-    - cross-python.patch
     - dxtbx.patch
     - libann.patch
     - libtbx_osx-arm64.patch  # [build_platform != target_platform]
     - libtbx_SConscript.patch
 
 build:
-  number: 1
+  number: 0
   preserve_egg_dir: true
 
 requirements:
