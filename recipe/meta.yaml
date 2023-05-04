@@ -1,4 +1,4 @@
-{% set version = "2023.3" %}
+{% set version = "2023.4" %}
 
 package:
   name: cctbx-base
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: d1e35c028cae63a6312150df712f225bbfe51a76474fdf209d2e66bcdb3ac20a
+  sha256: ad46f373875e1893f5fa87267b5445b97d660d0d05887e41d38d1fdd0e46724b
   patches:
     - cbf.patch
     - dxtbx.patch
