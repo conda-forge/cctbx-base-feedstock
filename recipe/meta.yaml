@@ -89,6 +89,7 @@ outputs:
         - pyside2  # [x86_64 or arm64]
         - python
         - pyzmq
+        - qt-webengine  # [x86_64 or arm64]
         - websockets
         - wxpython  # [x86_64 or arm64]
     test:
