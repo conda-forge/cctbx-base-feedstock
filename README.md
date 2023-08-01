@@ -3,6 +3,7 @@ About cctbx-base-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cctbx-base-feedstock/blob/main/LICENSE.txt)
 
+
 About cctbx-base
 ----------------
 
@@ -23,6 +24,7 @@ determination. Phenix depends on the cctbx, but not vice versa. This
 hierarchical approach enforces a clean design as a reusable library.
 The cctbx is therefore also useful for small-molecule crystallography
 and even general scientific applications.
+
 
 About cctbx
 -----------
