@@ -1,4 +1,4 @@
-{% set version = "2023.6" %}
+{% set version = "2023.7" %}
 
 package:
   name: cctbx-base
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: c3b81e25936c245a403d770951ec4687db1ea93b7f15befdf4eee2b0be21bdfd
+  sha256: 38074e3357dd203ddd6c85bdcf02de819fbcde08678575cf7ca3acf133c4b04c
   patches:
     - cbf.patch
     - dxtbx.patch
@@ -89,6 +89,7 @@ outputs:
         - pyside2  # [x86_64 or arm64]
         - python
         - pyzmq
+        - qt-webengine  # [x86_64 or arm64]
         - websockets
         - wxpython  # [x86_64 or arm64]
     test:
