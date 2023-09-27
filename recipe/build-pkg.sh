@@ -35,7 +35,7 @@ ${PYTHON} bootstrap.py build \
   --config-flags="--no_bin_python" \
   --config-flags="--skip_phenix_dispatchers"
 cd build
-./bin/libtbx.configure cma_es crys3d fable rstbx spotinder
+./bin/libtbx.configure cma_es crys3d fable rstbx serialtbx spotinder
 ./bin/libtbx.scons -j ${CPU_COUNT}
 ./bin/libtbx.scons -j ${CPU_COUNT}
 cd ..
