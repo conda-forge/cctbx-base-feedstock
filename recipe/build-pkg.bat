@@ -17,7 +17,7 @@ REM build
   --config-flags="--skip_phenix_dispatchers"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd build
-call .\bin\libtbx.configure cma_es crys3d fable rstbx spotinder
+call .\bin\libtbx.configure cma_es crys3d fable rstbx serialtbx spotinder
 if %errorlevel% neq 0 exit /b %errorlevel%
 call .\bin\libtbx.scons -j %CPU_COUNT%
 if %errorlevel% neq 0 exit /b %errorlevel%
