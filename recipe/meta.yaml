@@ -1,7 +1,7 @@
 {% set version = "2023.8" %}
 
 package:
-  name: cctbx-base
+  name: cctbx-split
   version: {{ version }}
 
 source:
@@ -15,45 +15,43 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: true
-
-requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - numpy                                  # [build_platform != target_platform]
-    - gnuconfig  # [unix]
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - {{ cdt('mesa-dri-drivers') }}  # [linux]
-    - {{ cdt('libselinux') }}  # [linux]
-    - {{ cdt('libxdamage') }}  # [linux]
-    - {{ cdt('libxxf86vm') }}  # [linux]
-    - {{ cdt('libxext') }}     # [linux]
-  host:
-    - boost
-    - boost-cpp
-    - eigen
-    - future
-    - libglu  # [linux]
-    - numpy
-    - pip
-    - python
-    - python.app  # [osx]
-    - scons
-    - setuptools
-    - six
-    - xorg-libxfixes  # [linux]
 
 outputs:
   - name: cctbx-base
+    script: build-pkg.sh   # [unix]
+    script: build-pkg.bat  # [win]
     requirements:
+      build:
+        - python                                # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}    # [build_platform != target_platform]
+        - numpy                                 # [build_platform != target_platform]
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - gnuconfig                             # [unix]
+        - {{ cdt('libselinux') }}               # [linux]
+        - {{ cdt('libxdamage') }}               # [linux]
+        - {{ cdt('libxext') }}                  # [linux]
+        - {{ cdt('libxxf86vm') }}               # [linux]
+        - {{ cdt('mesa-libgl-devel') }}         # [linux]
+        - {{ cdt('mesa-dri-drivers') }}         # [linux]
+      host:
+        - libboost-python-devel
+        - libboost-devel
+        - eigen
+        - future
+        - libglu          # [linux]
+        - numpy
+        - pip
+        - python
+        - python.app      # [osx]
+        - scons
+        - setuptools
+        - six
+        - xorg-libxfixes  # [linux]
       run:
         - biopython
-        - {{ pin_compatible('boost') }}
-        - boost-cpp
         - future
         - {{ pin_compatible('libglu') }}  # [linux]
         - libsvm
@@ -135,3 +133,4 @@ extra:
   recipe-maintainers:
     - bkpoon
     - phyy-nx
+  feedstock-name: cctbx-base
