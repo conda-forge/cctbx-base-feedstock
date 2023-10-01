@@ -15,7 +15,7 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: true
 
 requirements:
@@ -33,8 +33,8 @@ requirements:
     - {{ cdt('libxxf86vm') }}  # [linux]
     - {{ cdt('libxext') }}     # [linux]
   host:
-    - boost
-    - boost-cpp
+    - libboost-python-devel
+    - libboost-devel
     - eigen
     - future
     - libglu  # [linux]
@@ -52,8 +52,6 @@ outputs:
     requirements:
       run:
         - biopython
-        - {{ pin_compatible('boost') }}
-        - boost-cpp
         - future
         - {{ pin_compatible('libglu') }}  # [linux]
         - libsvm
