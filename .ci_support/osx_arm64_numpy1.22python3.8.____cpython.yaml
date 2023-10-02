@@ -16,15 +16,11 @@ libboost_devel:
 - '1.82'
 libboost_python_devel:
 - '1.82'
-libsvm:
-- '332'
 macos_machine:
 - arm64-apple-darwin20.0.0
 numpy:
 - '1.22'
 pin_run_as_build:
-  libsvm:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
