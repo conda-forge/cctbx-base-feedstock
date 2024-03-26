@@ -15,7 +15,7 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: true
 
 outputs:
@@ -28,6 +28,7 @@ outputs:
         - cross-python_{{ target_platform }}    # [build_platform != target_platform]
         - numpy                                 # [build_platform != target_platform]
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - gnuconfig                             # [unix]
         - {{ cdt('libselinux') }}               # [linux]
