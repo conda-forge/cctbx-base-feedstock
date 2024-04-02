@@ -69,7 +69,7 @@ copy .\modules\cctbx_project\COPYRIGHT.txt %EXTRA_CCTBX_DIR%
 copy .\modules\cctbx_project\cctbx_version.txt %EXTRA_CCTBX_DIR%
 copy .\modules\cctbx_project\cctbx_version.h %LIBRARY_INC%\cctbx
 cd .\modules\cctbx_project
-%PYTHON% setup.py install
+%PYTHON% -m pip install . -vv
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..\..
 

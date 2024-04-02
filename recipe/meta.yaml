@@ -1,4 +1,4 @@
-{% set version = "2024.2" %}
+{% set version = "2024.3" %}
 
 package:
   name: cctbx-split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: 8bc5d40316d56f1e6ece43c55f6e591ed123cb64634630e689fdbd4df3245fac
+  sha256: 456d98cda8d3a53ad183bf1f2fb75f16500328b0afbdb2ff15c86f4603e815b8
   patches:
     - cbf.patch
     - dxtbx.patch
@@ -15,7 +15,7 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 1
+  number: 0
   preserve_egg_dir: true
 
 outputs:
@@ -85,7 +85,8 @@ outputs:
       run:
         - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
         - ipython
-        - pyside2  # [x86_64 or arm64]
+        # - pyside2  # [x86_64 or arm64]
+        - pyopengl  # [win]
         - python
         - pyzmq
         - qt-webengine  # [x86_64 or arm64]
