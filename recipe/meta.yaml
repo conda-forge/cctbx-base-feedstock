@@ -15,7 +15,7 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: true
 
 outputs:
@@ -58,7 +58,6 @@ outputs:
         - libsvm
         - matplotlib-base
         - mrcfile
-        - {{ pin_compatible('numpy') }}
         - pillow
         - psutil
         - python
