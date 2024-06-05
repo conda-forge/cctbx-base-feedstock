@@ -382,6 +382,3 @@ Feedstock Maintainers
 * [@bkpoon](https://github.com/bkpoon/)
 * [@phyy-nx](https://github.com/phyy-nx/)
 
-
-<!-- dummy commit to enable rerendering -->
-
