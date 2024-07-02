@@ -1,4 +1,4 @@
-{% set version = "2024.5" %}
+{% set version = "2024.6" %}
 
 package:
   name: cctbx-split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: 10d7fd7649b705a8ea7dc4cdd139bd31b7d47329d653a2b81c3561bb072ec726
+  sha256: 8ede67b5b75a2104e7d0a060b60fd0f485267371b9ea4c02bf9ecc09549277b1
   patches:
     - cbf.patch
     - dxtbx.patch
@@ -70,11 +70,13 @@ outputs:
     test:
       imports:
         - scitbx.array_family.flex
-        - gltbx.gl  # [not (win and py>=38)]
-        - gltbx.glu  # [not (win and py>=38)]
+        - gltbx.gl  # [not win]
+        - gltbx.glu  # [not win]
       commands:
         - libtbx.show_commands
         - pip check
+        - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
+        - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
 
@@ -95,12 +97,14 @@ outputs:
     test:
       imports:
         - scitbx.array_family.flex
-        - gltbx.gl  # [not (win and py>=38)]
-        - gltbx.glu  # [not (win and py>=38)]
+        - gltbx.gl
+        - gltbx.glu
       commands:
         - libtbx.show_commands
         - pip check
         - libtbx.python -c "import wx; wx.App()"  # [not linux]
+        - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
+        - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
 
