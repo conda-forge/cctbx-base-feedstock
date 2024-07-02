@@ -75,6 +75,8 @@ outputs:
       commands:
         - libtbx.show_commands
         - pip check
+        - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
+        - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
 
@@ -101,6 +103,8 @@ outputs:
         - libtbx.show_commands
         - pip check
         - libtbx.python -c "import wx; wx.App()"  # [not linux]
+        - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
+        - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
 

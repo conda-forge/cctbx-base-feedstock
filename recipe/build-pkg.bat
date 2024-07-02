@@ -92,15 +92,3 @@ del /Q %LIBRARY_BIN%\*show_build_path.bat
 del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
-
-REM run basic tests
-echo Running cctbx, libtbx, and scitbx tests
-mkdir test
-cd test
-..\build\bin\libtbx.run_tests_parallel ^
-  module=cctbx ^
-  module=libtbx ^
-  module=scitbx ^
-  nproc=%CPU_COUNT%
-cd ..
-rmdir /S /Q .\test
