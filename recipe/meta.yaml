@@ -17,6 +17,7 @@ source:
 build:
   number: 1
   preserve_egg_dir: true
+  skip: true  # [py>39]
 
 outputs:
   - name: cctbx-base
@@ -78,6 +79,7 @@ outputs:
         - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
+        - numpy =1.19
 
   - name: cctbx
     requirements:
@@ -106,6 +108,7 @@ outputs:
         - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
+        - numpy =1.19
 
 about:
   home: https://github.com/cctbx/cctbx_project
