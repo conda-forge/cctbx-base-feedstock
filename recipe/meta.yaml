@@ -1,4 +1,4 @@
-{% set version = "2024.6" %}
+{% set version = "2024.7" %}
 
 package:
   name: cctbx-split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: 8ede67b5b75a2104e7d0a060b60fd0f485267371b9ea4c02bf9ecc09549277b1
+  sha256: 0f97b5aad194cd0056e44859d20f4a4c106abd18414c30cde58d9fbaa0f8296d
   patches:
     - cbf.patch
     - dxtbx.patch
@@ -15,7 +15,7 @@ source:
     - libtbx_SConscript.patch
 
 build:
-  number: 1
+  number: 0
   preserve_egg_dir: true
 
 outputs:
@@ -37,7 +37,6 @@ outputs:
         - {{ cdt('libxxf86vm') }}               # [linux]
         - {{ cdt('mesa-libgl-devel') }}         # [linux]
         - {{ cdt('mesa-dri-drivers') }}         # [linux]
-        - libcxx <18  # [osx]
       host:
         - libboost-python-devel
         - libboost-devel
@@ -52,7 +51,6 @@ outputs:
         - setuptools
         - six
         - xorg-libxfixes  # [linux]
-        - libcxx <18  # [osx]
       run:
         - biopython
         - future
