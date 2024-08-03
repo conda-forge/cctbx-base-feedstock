@@ -37,7 +37,6 @@ outputs:
         - {{ cdt('libxxf86vm') }}               # [linux]
         - {{ cdt('mesa-libgl-devel') }}         # [linux]
         - {{ cdt('mesa-dri-drivers') }}         # [linux]
-        - libcxx <18  # [osx]
       host:
         - libboost-python-devel
         - libboost-devel
@@ -52,7 +51,6 @@ outputs:
         - setuptools
         - six
         - xorg-libxfixes  # [linux]
-        - libcxx <18  # [osx]
       run:
         - biopython
         - future
