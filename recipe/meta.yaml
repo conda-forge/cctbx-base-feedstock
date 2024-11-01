@@ -52,7 +52,7 @@ outputs:
         - six
         - xorg-libxfixes  # [linux]
       run:
-        - biopython
+        # - biopython
         - future
         - {{ pin_compatible('libglu') }}  # [linux]
         - libsvm
@@ -86,13 +86,13 @@ outputs:
       run:
         - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
         - ipython
-        - pyside2  # [(x86_64 or arm64) and py<312]
-        - pyopengl  # [win]
+        # - pyside2  # [(x86_64 or arm64) and py<312]
+        - pyopengl
         - python
         - pyzmq
-        - qt-webengine  # [x86_64 or arm64]
+        # - qt-webengine  # [x86_64 or arm64]
         - websockets
-        - wxpython  # [x86_64 or arm64]
+        # - wxpython  # [x86_64 or arm64]
     test:
       imports:
         - scitbx.array_family.flex
