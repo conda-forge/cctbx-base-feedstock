@@ -106,7 +106,6 @@ outputs:
         - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
-        - wxwidgets =3.2.5
 
 about:
   home: https://github.com/cctbx/cctbx_project
