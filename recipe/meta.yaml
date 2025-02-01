@@ -92,7 +92,7 @@ outputs:
         - pyzmq
         - qt-webengine  # [(x86_64 or arm64) and py<312]
         - websockets
-        - wxpython  # [(x86_64 or arm64) and py<313]
+        - wxpython  # [x86_64 or arm64]
     test:
       imports:
         - scitbx.array_family.flex
