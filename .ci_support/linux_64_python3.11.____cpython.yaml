@@ -23,7 +23,7 @@ libboost_devel:
 libboost_python_devel:
 - '1.86'
 numpy:
-- '2.0'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -35,5 +35,3 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - python
-  - numpy
