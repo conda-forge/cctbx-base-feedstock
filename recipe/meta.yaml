@@ -1,4 +1,4 @@
-{% set version = "2025.8" %}
+{% set version = "2025.9" %}
 
 package:
   name: cctbx-split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: af10a618c858162609827203c70cbf6167156771250dc9b23ee529cdba6bea70
+  sha256: 82150d9f60ee59ab3b9f788a661abef03c86a2c02a87666c9a84b684d7c5e135
   patches:
     - cbf.patch
     - dxtbx.patch
