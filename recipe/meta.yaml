@@ -2,7 +2,7 @@
 
 package:
   name: cctbx-split
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
@@ -16,7 +16,7 @@ source:
     - b188.patch
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: true
 
 outputs:
@@ -32,12 +32,6 @@ outputs:
         - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - gnuconfig                             # [unix]
-        - {{ cdt('libselinux') }}               # [linux]
-        - {{ cdt('libxdamage') }}               # [linux]
-        - {{ cdt('libxext') }}                  # [linux]
-        - {{ cdt('libxxf86vm') }}               # [linux]
-        - {{ cdt('mesa-libgl-devel') }}         # [linux]
-        - {{ cdt('mesa-dri-drivers') }}         # [linux]
       host:
         - libboost-python-devel
         - libboost-devel
@@ -53,6 +47,7 @@ outputs:
         - setuptools
         - six
         - xorg-libxfixes  # [linux]
+        - libgl-devel                           # [linux]
       run:
         - biopython  # [py<313]
         - future
