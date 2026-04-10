@@ -5,8 +5,8 @@ package:
   version: "{{ version }}"
 
 source:
-  url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: 6c58706e51d55450d236cfed531fcd37655bd1221418be4511861cb13fb9ee99
+  url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}-updated.tar.gz
+  sha256: 43504c71a3c01cc2fc572ecf92d56dcc09ae320026d184b57515c51213f6e40b
   patches:
     - cbf.patch
     - dxtbx.patch
@@ -16,7 +16,7 @@ source:
     - b188.patch
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: true
 
 outputs:
