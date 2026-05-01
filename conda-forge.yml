@@ -1,5 +1,3 @@
-azure:
-  store_build_artifacts: true
 build_platform:
   linux_aarch64: linux_64
   linux_ppc64le: linux_64
@@ -14,3 +12,7 @@ provider:
   linux_aarch64: azure
   linux_ppc64le: azure
 test: native
+workflow_settings:
+  store_build_artifacts: 
+    - platform: [linux_64, osx_64, osx_arm64, win_64]
+      value: true
