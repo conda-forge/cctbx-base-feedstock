@@ -58,6 +58,7 @@ outputs:
         - psutil
         - python
         - python.app  # [osx]
+        - pyyaml
         - reportlab
         - requests
         - scipy
