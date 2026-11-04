@@ -20,7 +20,7 @@ source:
     - tst_guided_coding.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -61,8 +61,7 @@ outputs:
             - xorg-libxfixes
             - libgl-devel
       run:
-        - if: match(python, "<3.13")
-          then: biopython
+        - biopython
         - future
         - if: linux
           then: ${{ pin_compatible('libglu') }}
@@ -88,11 +87,16 @@ outputs:
                 - gltbx.gl
                 - gltbx.glu
       - script:
-          - libtbx.show_commands
           - if: unix
-            then: mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
+            then:
+              - libtbx.show_commands
+              - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
+          # dispatchers are .bat files on Windows; without call, cmd never
+          # returns from them and the rest of the script is skipped
           - if: win
-            then: mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
+            then:
+              - call libtbx.show_commands
+              - mkdir test && cd test && call libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
 
   - package:
       name: cctbx
@@ -102,7 +106,7 @@ outputs:
       run:
         - ${{ pin_subpackage('cctbx-base', upper_bound='x.x.x') }}
         - ipython
-        - if: (x86_64 or arm64) and match(python, "<3.12")
+        - if: (x86_64 or arm64 or aarch64) and match(python, "<3.14")
           then:
             - pyside2
             - qt-webengine
@@ -110,7 +114,7 @@ outputs:
         - python
         - pyzmq
         - websockets
-        - if: x86_64 or arm64
+        - if: x86_64 or arm64 or aarch64
           then: wxpython
     tests:
       - python:
@@ -119,13 +123,18 @@ outputs:
             - gltbx.gl
             - gltbx.glu
       - script:
-          - libtbx.show_commands
-          - if: not linux and match(python, "<3.13")
+          - if: unix
+            then: libtbx.show_commands
+          - if: win
+            then: call libtbx.show_commands
+          - if: osx
             then: libtbx.python -c "import wx; wx.App()"
+          - if: win
+            then: call libtbx.python -c "import wx; wx.App()"
           - if: unix
             then: mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
           - if: win
-            then: mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
+            then: mkdir test && cd test && call libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
 
 about:
   homepage: https://github.com/cctbx/cctbx_project
