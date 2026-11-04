@@ -21,7 +21,6 @@ hierarchical approach enforces a clean design as a reusable library.
 The cctbx is therefore also useful for small-molecule crystallography
 and even general scientific applications.
 
-
 Current build status
 ====================
 
