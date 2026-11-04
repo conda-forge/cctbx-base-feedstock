@@ -1,0 +1,160 @@
+schema_version: 1
+
+context:
+  version: "2026.10"
+
+recipe:
+  name: cctbx-split
+  version: ${{ version }}
+
+source:
+  url: https://github.com/cctbx/cctbx_project/releases/download/v${{ version }}/cctbx-${{ version }}.tar.gz
+  sha256: 0f157a793f5a156308e2ab306aa81a840a8f5c4461ebd676dec3e3bfb22e77e2
+  patches:
+    - cbf.patch
+    - dxtbx.patch
+    - libann.patch
+    - if: build_platform != target_platform
+      then: libtbx_osx-arm64.patch
+    - libtbx_SConscript.patch
+    - tst_guided_coding.patch
+
+build:
+  number: 0
+
+outputs:
+  - package:
+      name: cctbx-base
+    build:
+      script:
+        file: build
+    requirements:
+      build:
+        - if: build_platform != target_platform
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+            - numpy
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
+        - ${{ compiler('cxx') }}
+        - if: unix
+          then: gnuconfig
+      host:
+        - libboost-python-devel
+        - libboost-devel
+        - eigen
+        - future
+        - if: linux
+          then: libglu
+        - numpy
+        - pip
+        - python
+        - if: osx
+          then: python.app
+        - scipy
+        - scons
+        - setuptools
+        - six
+        - if: linux
+          then:
+            - xorg-libxfixes
+            - libgl-devel
+      run:
+        - if: match(python, "<3.13")
+          then: biopython
+        - future
+        - if: linux
+          then: ${{ pin_compatible('libglu') }}
+        - libsvm
+        - matplotlib-base
+        - mrcfile
+        - pillow
+        - psutil
+        - python
+        - if: osx
+          then: python.app
+        - pyyaml
+        - reportlab
+        - requests
+        - scipy
+        - six
+    tests:
+      - python:
+          imports:
+            - scitbx.array_family.flex
+            - if: not win
+              then:
+                - gltbx.gl
+                - gltbx.glu
+      - script:
+          - libtbx.show_commands
+          - if: unix
+            then: mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
+          - if: win
+            then: mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
+
+  - package:
+      name: cctbx
+    requirements:
+      host:
+        - python
+      run:
+        - ${{ pin_subpackage('cctbx-base', upper_bound='x.x.x') }}
+        - ipython
+        - if: (x86_64 or arm64) and match(python, "<3.12")
+          then:
+            - pyside2
+            - qt-webengine
+        - pyopengl
+        - python
+        - pyzmq
+        - websockets
+        - if: x86_64 or arm64
+          then: wxpython
+    tests:
+      - python:
+          imports:
+            - scitbx.array_family.flex
+            - gltbx.gl
+            - gltbx.glu
+      - script:
+          - libtbx.show_commands
+          - if: not linux and match(python, "<3.13")
+            then: libtbx.python -c "import wx; wx.App()"
+          - if: unix
+            then: mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
+          - if: win
+            then: mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
+
+about:
+  homepage: https://github.com/cctbx/cctbx_project
+  license: BSD-3-Clause-LBNL AND BSD-3-Clause AND BSL-1.0 AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-3.0-only AND MIT AND LGPL-2.0-or-later WITH WxWindows-exception-3.1
+  license_family: Other
+  license_file:
+    - licenses/LICENSE.txt
+    - licenses/Boost_LICENSE_1_0.txt
+    - licenses/bsd_3_clause.txt
+    - licenses/gpl-3.0.txt
+    - licenses/lgpl-2.0.txt
+    - licenses/lgpl-2.1.txt
+    - licenses/lgpl-3.0.txt
+    - licenses/mit.txt
+    - licenses/wxWindows_3.1.txt
+  summary: The Computational Crystallography Toolbox
+  description: |
+    The Computational Crystallography Toolbox (cctbx) is being developed
+    as the open source component of the Phenix system. The goal of the
+    Phenix project is to advance automation of macromolecular structure
+    determination. Phenix depends on the cctbx, but not vice versa. This
+    hierarchical approach enforces a clean design as a reusable library.
+    The cctbx is therefore also useful for small-molecule crystallography
+    and even general scientific applications.
+  documentation: https://cctbx.github.io/
+  repository: https://github.com/cctbx/cctbx_project
+
+extra:
+  recipe-maintainers:
+    - bkpoon
+    - phyy-nx
+  feedstock-name: cctbx-base

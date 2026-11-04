@@ -71,7 +71,7 @@ find . -name "*.o" -type f -delete
 cd ..
 
 # fix rpath on macOS because libraries and extensions will be in different locations
-if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+if [[ ! -z "${MACOSX_DEPLOYMENT_TARGET:-}" ]]; then
   echo Fixing rpath:
   ${PYTHON} ${RECIPE_DIR}/fix_macos_rpath.py
 fi
