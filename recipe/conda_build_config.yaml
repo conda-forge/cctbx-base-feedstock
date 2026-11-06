@@ -1,3 +1,4 @@
+# keep clang at 19 on macOS: Boost fails to build with clang 21
 c_compiler_version:  # [osx]
   - '19'  # [osx]
 cxx_compiler_version:  # [osx]
